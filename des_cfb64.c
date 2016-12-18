@@ -1,52 +1,19 @@
 #include"des_cfb64.h"
 
-//des_cfb64_encrypt
-char *
-Encrypt( char *Key, char *Msg, int size)
+char * cipher( char *key, char *data, int size)
 {
+	int n = 0;
+    static char* res;
+	res = (char *)malloc(size);
+    des_cblock	block;
+    des_key_schedule schedule;
 
-    static char*    Res;
-    int             n=0;
-    DES_cblock      Key2;
-    DES_key_schedule schedule;
+    memcpy(block, key, 8);
+    DES_set_odd_parity(&block);
+    DES_set_key_checked(&block, &schedule);
 
-    Res = ( char * ) malloc( size );
+    DES_cfb64_encrypt(data, res, size, &schedule, &block, &n, DES_ENCRYPT);
 
-    /* Prepare the key for use with DES_cfb64_encrypt */
-    memcpy( Key2, Key,8);
-    DES_set_odd_parity( &Key2 );
-    DES_set_key_checked( &Key2, &schedule );
-
-    /* Encryption occurs here */
-    DES_cfb64_encrypt( ( unsigned char * ) Msg, ( unsigned char * ) Res,
-               size, &schedule, &Key2, &n, DES_ENCRYPT );
-
-     return (Res);
-}
-
-//des_cfb64_decrypt
-char *
-Decrypt( char *Key, char *Msg, int size)
-{
-
-    static char*    Res;
-    int             n=0;
-
-    DES_cblock      Key2;
-    DES_key_schedule schedule;
-
-    Res = ( char * ) malloc( size );
-
-    /* Prepare the key for use with DES_cfb64_encrypt */
-    memcpy( Key2, Key,8);
-    DES_set_odd_parity( &Key2 );
-    DES_set_key_checked( &Key2, &schedule );
-
-    /* Decryption occurs here */
-    DES_cfb64_encrypt( ( unsigned char * ) Msg, ( unsigned char * ) Res,
-               size, &schedule, &Key2, &n, DES_DECRYPT );
-
-    return (Res);
-
+	return (res);
 }
 
