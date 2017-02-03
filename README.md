@@ -10,8 +10,11 @@
 	1）apt-get install libssl-dev
 		# make sure you have openssl library installed
 
-	2）make
-		# build the program
+	2）make c
+		# build the C program 'main'
  
 	3）make test
 		# I offer a sample text to be encrypted...
+	
+	4) make py
+		# to make the python module 'desdemo', just 'import desdemo' and then call the two function with key and data.
