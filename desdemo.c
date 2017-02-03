@@ -3,12 +3,6 @@
 #include "des_cfb64.h"
 #include <Python.h>
 
-int main()
-{
-	printf("Hello\n");
-	return 0;
-}
-
 char *hello()
 {
 	return "Hello, World";
