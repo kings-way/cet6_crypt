@@ -13,7 +13,5 @@ setup(
 #				include_dirs=['/usr/include/openssl'],
 				libraries=['crypto']
 		)
-	
 	]	
-	
 )
