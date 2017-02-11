@@ -1,3 +1,8 @@
+/*
+ * filename: des_cfb64.h
+ * author: King's Way <root#kings-way.info>
+ * date: 20170211
+ */ 
 #include <string.h>
 #include <stdlib.h>
 #include <openssl/des.h>

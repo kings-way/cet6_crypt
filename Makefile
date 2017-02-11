@@ -3,14 +3,14 @@ cflags = -static
 objects_c = des_cfb64.o main.o
 objects_py = des_cfb64.o desdemo.o
 
+c: main.o des_cfb64.o
+	cc $(cflags) -o main $(objects_c) -lcrypto
+
 main.o: main.c
 	cc $(cflags) -c main.c
 
 des_cfb64.o: des_cfb64.c des_cfb64.h
-	cc $(cflags) -fPIC -c des_cfb64.c 
-
-c: main.o des_cfb64.o
-	cc $(cflags) -o main $(objects_c) -I/usr/include/openssl -lcrypto
+	cc $(cflags) -fPIC -c des_cfb64.c -I/usr/include/openssl
 
 
 
@@ -18,7 +18,7 @@ desdemo.o: desdemo.c
 	cc $(cflags) -fPIC -c desdemo.c -I/usr/include/python2.7
 
 desdemo.so: desdemo.o des_cfb64.o
-	cc -shared -fPIC $(objects_py) -I/usr/include/openssl -lcrypto -o desdemo.so
+	cc -shared -fPIC $(objects_py) -lcrypto -o desdemo.so
 
 py:desdemo.so
 
@@ -30,5 +30,4 @@ test:c
 
 .PHONY : clean
 clean :
-	rm main *.o *.so 2>>/dev/null
-
+	 -rm *.o main desdemo.so

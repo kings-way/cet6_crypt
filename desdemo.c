@@ -1,7 +1,12 @@
+/*
+ * filename: desdemo.c
+ * author: King's Way <root#kings-way.info>
+ * date: 20170211
+ */ 
 #include <stdio.h>
 #include <string.h>
 #include "des_cfb64.h"
-#include <Python.h>
+#include <python2.7/Python.h>
 
 char *hello()
 {
@@ -20,7 +25,7 @@ static PyObject* __des_cfb64_encrypt(PyObject* self, PyObject* args)
 	char *data;
 	int size;
 
-	PyArg_ParseTuple(args, "ss", &key, &data); // TODO: Find out why we must use '&' here....
+	PyArg_ParseTuple(args, "ss", &key, &data); 
 	size=strlen(data);
 //	printf("Key:%s, Data:%s\n", key,data);
 	char *result = encrypt(key, data, size);
@@ -34,7 +39,7 @@ static PyObject* __des_cfb64_decrypt(PyObject* self, PyObject* args)
 	char *data;
 	int size;
 
-	PyArg_ParseTuple(args, "ss", &key, &data); // TODO: Find out why we must use '&' here....
+	PyArg_ParseTuple(args, "ss", &key, &data);
 	size=strlen(data);
 	char *result = decrypt(key, data, size);
 
