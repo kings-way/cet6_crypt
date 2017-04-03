@@ -1,6 +1,6 @@
 /*
  * filename: desdemo.c
- * author: King's Way <root#kings-way.info>
+ * author: King's Way <io[AT]stdio.io>
  * date: 20170211
  */ 
 #include <stdio.h>

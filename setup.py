@@ -4,7 +4,7 @@ setup(
 	version = '0.1', 
 	description='DES_CFB64 Encrypt/Decrypt Function From OpenSSL',
 	author='King\'s Way',
-	author_email='root#kings-way.info',
+	author_email='io[AT]stdio.io',
 	url='https://github.com/kings-way/cet6_crypt',
 	ext_modules = [
 		Extension(
