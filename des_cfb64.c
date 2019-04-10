@@ -10,8 +10,8 @@ char *encrypt( char *key, char *data, int size)
 	int n = 0;
     static char* result;
 	result = (char *)malloc(size);
-    des_cblock	block;
-    des_key_schedule schedule;
+    DES_cblock	block;
+    DES_key_schedule schedule;
 
     memcpy(block, key, 8);
     DES_set_odd_parity(&block);
@@ -28,8 +28,8 @@ char *decrypt( char *key, char *data, int size)
 	int n = 0;
     static char* result;
 	result = (char *)malloc(size);
-    des_cblock	block;
-    des_key_schedule schedule;
+    DES_cblock	block;
+    DES_key_schedule schedule;
 
     memcpy(block, key, 8);
     DES_set_odd_parity(&block);
